@@ -19,3 +19,21 @@ TaskSchema.virtual('creator', {
   ref: 'Profile',
   justOne: true
 })
+TaskSchema.virtual('backlogItem', {
+  localField: 'backlogItemId',
+  foreignField: '_id',
+  justOne: true,
+  ref: 'BackLogItem'
+})
+TaskSchema.virtual('project', {
+  localField: 'projectId',
+  foreignField: '_id',
+  justOne: true,
+  ref: 'Project'
+})
+TaskSchema.virtual('creator', {
+  localField: 'creatorId',
+  foreignField: '_id',
+  justOne: true,
+  ref: 'Account'
+})
