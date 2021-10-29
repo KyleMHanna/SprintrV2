@@ -3,7 +3,7 @@ import { Auth0Provider } from '@bcwdev/auth0provider'
 import { projectService } from '../services/ProjectService.js'
 export class ProjectController extends BaseController {
   // TODO not sure why this is throwing error for eslint
-  constructor () {
+  constructor() {
     super('api/projects')
     this.router
       .get('', this.getProjects)
