@@ -11,7 +11,7 @@ class DbContext {
   Values = mongoose.model('Value', ValueSchema);
   Account = mongoose.model('Account', AccountSchema);
   Profiles = mongoose.model('Profile', ProfileSchema, 'accounts');
-  Project = mongoose.model('Project', ProjectSchema, 'accounts');
+  Project = mongoose.model('Project', ProjectSchema);
   BackLogItem = mongoose.model('BackLogItem', BackLogItemSchema);
   Note = mongoose.model('Note', NoteSchema);
   Sprint = mongoose.model('Sprint', SprintSchema);
