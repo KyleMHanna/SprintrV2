@@ -2,8 +2,8 @@ import { dbContext } from '../db/DbContext.js'
 import { BadRequest, Forbidden } from '../utils/Errors.js'
 
 class NotesService {
-  async getNotes(query) {
-    const notes = await dbContext.Note.find(query).populate('creator', 'name picture')
+  async getNotes(projectId) {
+    const notes = await dbContext.Note.find({ projectId }).populate('creator', 'name picture')
     if (!notes) {
       throw new BadRequest('No notes found')
     }
