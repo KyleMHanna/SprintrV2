@@ -12,16 +12,16 @@ class ProjectsService {
     AppState.currentProject = new Project(res.data)
   }
   async createProject(project) {
-    const res = await api.post('api/projects', project);
+    const res = await api.post('api/projects/', project);
     AppState.projects.push(new Project(res.data))
     return res.data.id
   }
   async editProject(project) {
-    const res = await api.put('api/projects', project);
+    const res = await api.put('api/projects/', project);
     AppState.projects = new Project(res.data)
   }
   async deleteProject(projectId) {
-    const res = await api.delete('api/projects' + projectId);
+    const res = await api.delete('api/projects/' + projectId);
     AppState.projects = AppState.projects.filter(p => p.id !== projectId)
   }
 }
