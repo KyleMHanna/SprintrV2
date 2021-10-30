@@ -31,6 +31,19 @@ class TaskService {
     await task.remove()
     return task
   }
+
+  async editTask(taskId, id, body) {
+    const task = await this.getTaskById(taskId)
+    if (id !== task.creatorId.toString()) {
+      throw new Forbidden('Not Authorized to Edit')
+    }
+    task.name = body.name || task.name
+    task.weight = body.weight || task.weight
+    task.completedOn = body.completedOn || task.completedOn
+    task.isComplete = body.isComplete || task.isComplete
+    await task.save()
+    return task
+  }
 }
 
 export const taskService = new TaskService()
