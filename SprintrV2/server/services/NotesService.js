@@ -2,8 +2,8 @@ import { dbContext } from '../db/DbContext.js'
 import { BadRequest, Forbidden } from '../utils/Errors.js'
 
 class NotesService {
-  async getNotes(query) {
-    const notes = await dbContext.Note.find(query).populate('creator', 'name picture')
+  async getNotes(backlogItemId) {
+    const notes = await dbContext.Note.find().populate('creator', 'name picture')
     if (!notes) {
       throw new BadRequest('No notes found')
     }
@@ -25,7 +25,7 @@ class NotesService {
   }
 
   async deleteNote(noteId, id) {
-    const note = await this.getNoteById(noteId)
+    const note = await dbContext.Note.findByIdAndRemove(noteId)
     if (id !== note.creatorId.toString()) {
       throw new Forbidden('You cannot delete')
     }
