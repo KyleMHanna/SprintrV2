@@ -9,6 +9,12 @@
 <img :src="project.creator.picture" class="rounded-circle" height="30">
   </div>
   <div class="col-md-4">
+      <h3>
+          {{ project.description }}
+      </h3>
+      <div class="on-hover text-end" style="right: 1rem; top: 1rem" v-if="account.id == project.creatorId">
+        <i class="mdi mdi-delete text-danger f-20 selectable" @click="deleteProject()"></i>
+      </div>
 <p>{{ new Date(project.createdAt).toDateString() }}</p>
   </div>
 </div>
@@ -17,10 +23,13 @@
 <script>
 import Pop from '../utils/Pop.js'
 import { projectsService } from '../services/ProjectsService.js'
+import { Project } from '../models/Project.js'
+import { computed } from '@vue/reactivity'
+import { AppState } from '../AppState.js'
 
 export default {
   props: {
-    project: { type: Project, required: true }
+    project: { type: Object, required: true }
   },
   setup(props) {
     return {
