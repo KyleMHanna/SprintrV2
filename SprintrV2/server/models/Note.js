@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 export const NoteSchema = new Schema(
   {
     body: { type: String, required: true },
-    backLogItemId: { type: Schema.Types.ObjectId, required: true, ref: 'BackLogItem' },
+    backlogItemId: { type: Schema.Types.ObjectId, required: true, ref: 'BackLogItem' },
     projectId: { type: Schema.Types.ObjectId, required: true, ref: 'Project' },
     creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }
   },

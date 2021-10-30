@@ -26,7 +26,7 @@ class ProjectService {
 
   async deleteProject(projectId, id) {
     const project = await this.getProjectById(projectId)
-    if (id === project.creatorId.toString()) {
+    if (id !== project.creatorId.toString()) {
       throw new Forbidden('Not allowed to delete project')
     }
     await project.remove()
@@ -35,7 +35,7 @@ class ProjectService {
 
   async editProject(projectId, id, body) {
     const project = await this.getProjectById(projectId)
-    if (id === project.creatorId.toString()) {
+    if (id !== project.creatorId.toString()) {
       throw new Forbidden('Not allowed to edit project')
     }
     project.name = body.name || project.name
