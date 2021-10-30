@@ -1,9 +1,27 @@
 <template>
-<div class="container-fluid">
-  <div class="row">projects will show up below</div>
-    <Projects v-for="p in projects" :key="p.id" :project="p"/>
-</div>
-
+  <div class="container-fluid">
+    <div class="row justify-content-around">
+      <h1 class="text-center mb-4">
+        Projects
+        <button
+          class="btn projectButton"
+          data-bs-toggle="modal"
+          data-bs-target="#createProject-modal"
+        >
+          <i class="mdi mdi-plus-circle mdi-48px text-success"></i>
+        </button>
+      </h1>
+    </div>
+    <Projects v-for="p in projects" :key="p.id" :project="p" />
+  </div>
+  <footer>
+    <Modal id="createProject-modal">
+      <template #modal-title> Create Project </template>
+      <template #modal-body>
+        <ProjectForm />
+      </template>
+    </Modal>
+  </footer>
 </template>
 
 <script>
@@ -15,12 +33,12 @@ import { AppState } from '../AppState.js'
 export default {
   name: 'Home',
   setup() {
-      onMounted( async () => {
+    onMounted(async () => {
       try {
-       await projectsService.getProjects()
+        await projectsService.getProjects()
       } catch (error) {
         Pop.toast(error.message, 'error')
-        logger.log('getProjects onMounted' ,error.message)
+        logger.log('getProjects onMounted', error.message)
       }
     })
     return {
@@ -32,15 +50,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home{
+.home {
   display: grid;
   height: 80vh;
   place-content: center;
   text-align: center;
   user-select: none;
-  .home-card{
+  .home-card {
     width: 50vw;
-    > img{
+    > img {
       height: 200px;
       max-width: 200px;
       width: 100%;

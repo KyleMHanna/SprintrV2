@@ -1,23 +1,39 @@
 <template>
-<div class="row">
-  <div class="col-md-4">
-      <router-link :to="{name:'Project', params: {projectId: project.id}}" class="selectable">
-            {{ project.name }}
+  <div class="row text-center card-header">
+    <div class="col-md-3 m-3">
+      <router-link
+        :to="{ name: 'Project', params: { projectId: project.id } }"
+        class="selectable"
+      >
+        <h1 v-if="project.creator">
+          <img
+            :src="project.creator.picture"
+            class="rounded-circle"
+            height="30"
+          />
+          {{ project.name }}
+        </h1>
       </router-link>
-  </div>
-  <div class="col-md-4" v-if="project.creator">
-<img :src="project.creator.picture" class="rounded-circle" height="30">
-  </div>
-  <div class="col-md-4">
+    </div>
+    <div class="col-md-3 card-body m-3">
       <h3>
-          {{ project.description }}
+        {{ project.description }}
       </h3>
-      <div class="on-hover text-end" style="right: 1rem; top: 1rem" v-if="account.id == project.creatorId">
-        <i class="mdi mdi-delete text-danger f-20 selectable" @click="deleteProject()"></i>
+    </div>
+    <div class="col-md-3 m-3">
+      <div
+        class="on-hover text-end"
+        style="right: 1rem; top: 1rem"
+        v-if="account.id == project.creatorId"
+      >
+        <i
+          class="mdi mdi-delete text-danger f-20 selectable"
+          @click="deleteProject()"
+        ></i>
       </div>
-<p>{{ new Date(project.createdAt).toDateString() }}</p>
+      <p>{{ new Date(project.createdAt).toDateString() }}</p>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -33,22 +49,21 @@ export default {
   },
   setup(props) {
     return {
-    projects: computed(() => AppState.projects),
-    account: computed(() => AppState.account),
-    async deleteProject(projectId){
-      try {
-        const yes = await Pop.confirm('Are you sure you')
-        if(!yes) {return}
-        await projectsService.deleteProject(props.project.id)
-      } catch (error) {
-        Pop.toast(error.message,'error')
+      projects: computed(() => AppState.projects),
+      account: computed(() => AppState.account),
+      async deleteProject(projectId) {
+        try {
+          const yes = await Pop.confirm('Are you sure you')
+          if (!yes) { return }
+          await projectsService.deleteProject(props.project.id)
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+        }
       }
-    }
     }
   }
 }
 </script>
 
 <style>
-
 </style>
