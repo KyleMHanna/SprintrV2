@@ -5,8 +5,8 @@ export const SprintSchema = new Schema(
   {
     creatorId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
     projectId: { type: Schema.Types.ObjectId, ref: 'Project', required: true },
-    startDate: { type: Date, required: true },
-    endDate: { type: Date, required: true },
+    startDate: { type: Date, required: false },
+    endDate: { type: Date, required: false },
     name: { type: String, required: true },
     isOpen: { type: Boolean, required: false }
   },
