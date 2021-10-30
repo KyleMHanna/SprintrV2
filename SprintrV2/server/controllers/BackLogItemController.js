@@ -1,7 +1,7 @@
 import BaseController from '../utils/BaseController.js'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { backLogItemService } from '../services/BackLogItemService.js'
-export class BacklogItemController extends BaseController {
+export class BackLogItemController extends BaseController {
   constructor() {
     super('api/projects/:projectId/backlog')
     this.router
