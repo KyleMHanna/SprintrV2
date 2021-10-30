@@ -2,6 +2,7 @@ import { dbContext } from '../db/DbContext.js'
 import { BadRequest, Forbidden } from '../utils/Errors.js'
 
 class NotesService {
+  // FIXME get passing on postman
   async getNotes(projectId) {
     const notes = await dbContext.Note.find({ projectId }).populate('creator', 'name picture')
     if (!notes) {

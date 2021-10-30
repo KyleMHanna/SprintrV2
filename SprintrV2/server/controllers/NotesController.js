@@ -13,6 +13,7 @@ export class NotesController extends BaseController {
       .delete('/:noteId', this.deleteNote)
   }
 
+  // FIXME get passing on postman
   async getNotes(req, res, next) {
     try {
       const notes = notesService.getNotes(req.params.projectId)
