@@ -6,6 +6,11 @@
 
 <script>
 export default {
-  name: 'AboutPage'
+  name: 'AboutPage',
+    setup() {
+    return {
+    
+    }
+  }
 }
 </script>

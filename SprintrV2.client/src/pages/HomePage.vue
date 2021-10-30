@@ -11,7 +11,12 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    return {
+    
+    }
+  }
 }
 </script>
 
