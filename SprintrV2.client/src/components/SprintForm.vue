@@ -46,7 +46,7 @@
     <br />
     <br />
 
-    <label for="isOpen">Is this sprint closed? </label>
+    <label for="isOpen">Is this sprint open? </label>
     <input
       class="ms-2"
       type="checkbox"
@@ -95,9 +95,9 @@ export default {
       async submitSprintForm() {
         try {
           if (editable.value.id) {
-            await sprintsService.editSprint(route.params.id, editable.value)
+            await sprintsService.editSprint(route.params.projectId, editable.value)
           } else {
-            await sprintsService.createSprint(route.params.id, editable.value)
+            await sprintsService.createSprint(route.params.projectId, editable.value)
             editable.value = {}
           }
         } catch (error) {

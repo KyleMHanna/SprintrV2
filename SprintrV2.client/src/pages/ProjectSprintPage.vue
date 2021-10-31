@@ -1,7 +1,7 @@
 <template>
-  <h1>hello from project_sprint_page</h1>
-  <div class="container-fluid">
-    <Sprint v-if="sprint.id" :sprint="sprint" />
+  <h1 class="text-center text-danger">project_sprint_page</h1>
+  <div class="container-fluid text-center">
+    <Sprint v-for="s in sprints" :key="s.id" :sprint="s" />
   </div>
 </template>
 
@@ -19,8 +19,8 @@ export default {
     const route = useRoute()
     onMounted(async () => {
       try {
-        await sprintsService.getSprints(route.params.id)
-        await projectsService.getProjectById(route.params.id)
+        await sprintsService.getSprints(route.params.projectId)
+        await projectsService.getProjectById(route.params.projectId)
       } catch (error) {
         Pop.toast(error.message, 'error')
       }
