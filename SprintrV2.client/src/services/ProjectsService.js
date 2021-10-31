@@ -7,8 +7,8 @@ class ProjectsService {
     const res = await api.get('api/projects/');
     AppState.projects = res.data.map(p => new Project(p))
   }
-  async getProjectById(projectId) {
-    const res = await api.get(`api/projects/${ projectId }`)
+  async getProjectById(id) {
+    const res = await api.get('api/projects/' + id)
     AppState.currentProject = new Project(res.data)
   }
   async createProject(project) {
