@@ -12,8 +12,8 @@
         </button>
       </h1>
     </div>
-    <Projects v-for="p in projects" :key="p.id" :project="p" />
   </div>
+  <Projects v-for="p in projects" :key="p.id" :project="p" />
   <footer>
     <Modal id="createProject-modal">
       <template #modal-title> Create Project </template>

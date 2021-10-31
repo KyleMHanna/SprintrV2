@@ -57,8 +57,8 @@ export default {
       editable,
       async submitProjectForm() {
         try {
-          const newProject = await projectsService.createProject(editable.value)
-          router.push({ name: 'Project.Backlog', params: { projectId: newProject.id } })
+          const project = await projectsService.createProject(editable.value)
+          router.push({ name: 'Project', params: { projectId: project.id } })
           editable.value = {}
         } catch (error) {
           Pop.toast(error.message, 'error')

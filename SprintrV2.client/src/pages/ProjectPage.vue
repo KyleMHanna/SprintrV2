@@ -1,11 +1,37 @@
 <template>
-  <h1>hello from ProjectPage</h1>
-  <b>
-    {{ currentProject.name }}
-  </b>
-  <router-link :to="{ name: 'Project.Backlog' }">
-    <li class="nav-link">Backlog</li>
-  </router-link>
+  <h1 class="text-center">hello from ProjectPage</h1>
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-md-1">
+        <router-link :to="{ name: 'Project.Backlog' }" class="text-center">
+          <li class="nav-link">Backlog</li>
+        </router-link>
+      </div>
+      <div class="col-md-10 card">
+        <div class="card-header">
+          <p v-if="currentProject.creator">
+            Project lead:
+            <img
+              :src="currentProject.creator.picture"
+              class="rounded-circle"
+              height="30"
+            />
+            {{ currentProject.creator.name }}
+          </p>
+          <h3>{{ currentProject.name }}</h3>
+        </div>
+        <div class="card-body">
+          {{ currentProject.description }}
+          <p>{{ new Date(currentProject.createdAt).toDateString() }}</p>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <router-link :to="{ name: 'Project.Sprint' }" class="text-center">
+          <li class="nav-link">Sprint</li>
+        </router-link>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -15,14 +41,9 @@ import { projectsService } from '../services/ProjectsService.js'
 import { useRoute } from 'vue-router'
 import Pop from '../utils/Pop.js'
 export default {
-  props: {
-    project: {
-      type: Object,
-      required: true
-    }
-  },
+
   name: 'ProjectPage',
-  setup(props) {
+  setup() {
     const route = useRoute()
     onMounted(async () => {
       try {

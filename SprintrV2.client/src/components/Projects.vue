@@ -1,37 +1,44 @@
 <template>
-  <div class="row text-center card-header">
-    <div class="col-md-3 m-3">
-      <router-link
-        :to="{ name: 'Project', params: { projectId: project.id } }"
-        class="selectable"
-      >
-        <h1 v-if="project.creator">
+  <div class="container-fluid">
+    <div class="row text-center card-header">
+      <div class="col-md-3 m-3">
+        <p v-if="project.creator">
+          Project lead:
           <img
             :src="project.creator.picture"
             class="rounded-circle"
             height="30"
           />
-          {{ project.name }}
-        </h1>
-      </router-link>
-    </div>
-    <div class="col-md-3 card-body m-3">
-      <h3>
-        {{ project.description }}
-      </h3>
-    </div>
-    <div class="col-md-3 m-3">
-      <div
-        class="on-hover text-end"
-        style="right: 1rem; top: 1rem"
-        v-if="account.id == project.creatorId"
-      >
-        <i
-          class="mdi mdi-delete text-danger f-20 selectable"
-          @click="deleteProject()"
-        ></i>
+          {{ project.creator.name }}
+        </p>
+        <router-link
+          :to="{ name: 'Project', params: { projectId: project.id } }"
+          class="selectable"
+        >
+          <h1>
+            {{ project.name }}
+          </h1>
+        </router-link>
       </div>
-      <p>{{ new Date(project.createdAt).toDateString() }}</p>
+      <div class="col-md-3 card-content m-3">
+        <p>
+          {{ project.description }}
+        </p>
+      </div>
+      <div class="col-md-3 m-3">
+        <p>{{ new Date(project.createdAt).toDateString() }}</p>
+      </div>
+      <div class="col-md-1">
+        <div
+          style="right: 1rem; top: 1rem"
+          v-if="account.id == project.creatorId"
+        >
+          <i
+            class="mdi mdi-delete text-danger f-20 selectable"
+            @click="deleteProject()"
+          ></i>
+        </div>
+      </div>
     </div>
   </div>
 </template>
