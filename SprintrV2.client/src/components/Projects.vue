@@ -30,6 +30,7 @@
       </div>
       <div class="col-md-1">
         <div
+          class="on-hover"
           style="right: 1rem; top: 1rem"
           v-if="account.id == project.creatorId"
         >
