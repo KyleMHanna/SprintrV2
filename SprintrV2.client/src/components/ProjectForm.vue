@@ -1,32 +1,32 @@
 <template>
   <form @submit.prevent="submitProjectForm">
-    <div class="form-group">
-      <label for="name" class="">Name:</label>
+    <div class="form-group text-center">
+      <label for="name" class="">Name</label>
       <input
         type="text"
-        class="form-control bg-white"
+        class="form-control bg-white text-center"
         name="name"
         id="name"
-        placeholder="Name..."
+        placeholder="Name"
         v-model="editable.name"
         required
       />
     </div>
 
-    <div class="form-group mt-4">
-      <label for="description" class="">Description:</label>
+    <div class="form-group mt-4 text-center">
+      <label for="description" class="">Description</label>
       <input
         type="text"
-        class="form-control description bg-white"
+        class="form-control description bg-white text-center"
         name="description"
         id="description"
-        placeholder="description..."
+        placeholder="Description"
         v-model="editable.description"
         required
       />
     </div>
 
-    <div class="button-group my-3">
+    <div class="button-group my-3 text-center">
       <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
         Create
       </button>
@@ -72,6 +72,6 @@ export default {
 
   <style scoped lang="scss">
 .description {
-  height: 6rem;
+  height: 4rem;
 }
 </style>
