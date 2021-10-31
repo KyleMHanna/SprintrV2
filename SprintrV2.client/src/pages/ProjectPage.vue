@@ -2,11 +2,6 @@
   <h1 class="text-center">hello from ProjectPage</h1>
   <div class="container text-center">
     <div class="row justify-content-center">
-      <div class="col-md-1">
-        <router-link :to="{ name: 'Project.Backlog' }" class="text-center">
-          <li class="nav-link">Backlog</li>
-        </router-link>
-      </div>
       <div class="col-md-10 card">
         <div class="card-header">
           <p v-if="currentProject.creator">
@@ -25,21 +20,31 @@
           <p>{{ new Date(currentProject.createdAt).toDateString() }}</p>
         </div>
       </div>
-      <div class="col-md-1">
-        <router-link :to="{ name: 'Project.Sprint' }" class="text-center">
-          <li class="nav-link">Sprint</li>
-        </router-link>
-      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <router-link :to="{ name: 'Project.Sprint' }" class="text-center">
+        <li class="nav-link">Sprints</li>
+      </router-link>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <router-link :to="{ name: 'Project.Backlog' }" class="text-center">
+        <li class="nav-link">Backlog</li>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
-import { AppState } from '../AppState.js'
-import { projectsService } from '../services/ProjectsService.js'
-import { useRoute } from 'vue-router'
+import {computed, onMounted} from '@vue/runtime-core'
+import {AppState} from '../AppState.js'
+import {projectsService} from '../services/ProjectsService.js'
+import {useRoute} from 'vue-router'
 import Pop from '../utils/Pop.js'
+import {sprintsService} from '../services/SprintsService.js'
 export default {
 
   name: 'ProjectPage',
@@ -47,6 +52,7 @@ export default {
     const route = useRoute()
     onMounted(async () => {
       try {
+        await sprintsService.getSprints(route.params.projectId)
         await projectsService.getProjectById(route.params.projectId)
       } catch (error) {
         Pop.toast(error.message, 'error')
@@ -55,6 +61,8 @@ export default {
     return {
       account: computed(() => AppState.account),
       project: computed(() => AppState.project),
+      sprints: computed(() => AppState.sprints),
+      backlog: computed(() => AppState.backlogs),
       currentProject: computed(() => AppState.currentProject),
     }
   }
