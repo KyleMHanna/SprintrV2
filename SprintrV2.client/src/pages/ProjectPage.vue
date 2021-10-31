@@ -24,9 +24,24 @@
   </div>
   <div class="container-fluid">
     <div class="row">
+      <div class="col-md-1">
+        <button
+          class="btn create-button text-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#Sprint-modal"
+        >
+          <i
+            class="mdi mdi-plus-box-multiple-outline mdi-24px text-primary"
+          ></i>
+          Sprint
+        </button>
+      </div>
+
+      <!-- <div v-for="s in sprints" :key="s.id" :sprint="s"> -->
       <router-link :to="{ name: 'Project.Sprint' }" class="text-center">
         <li class="nav-link">Sprints</li>
       </router-link>
+      <!-- </div> -->
     </div>
   </div>
   <div class="container-fluid">
@@ -36,6 +51,13 @@
       </router-link>
     </div>
   </div>
+  <Modal id="Sprint-modal">
+    <template #modal-title> Add Sprint </template>
+    <template #modal-body>
+      <SprintForm />
+    </template>
+  </Modal>
+  <router-view />
 </template>
 
 <script>
