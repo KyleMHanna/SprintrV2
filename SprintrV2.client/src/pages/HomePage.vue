@@ -8,7 +8,9 @@
           data-bs-toggle="modal"
           data-bs-target="#createProject-modal"
         >
-          <i class="mdi mdi-plus-circle mdi-48px text-success"></i>
+          <i
+            class="mdi mdi-plus-box-multiple-outline mdi-48px text-primary"
+          ></i>
         </button>
       </h1>
     </div>
@@ -25,11 +27,11 @@
 </template>
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
-import { projectsService } from '../services/ProjectsService.js'
+import {computed, onMounted} from '@vue/runtime-core'
+import {projectsService} from '../services/ProjectsService.js'
 import Pop from '../utils/Pop.js'
-import { logger } from '../utils/Logger.js'
-import { AppState } from '../AppState.js'
+import {logger} from '../utils/Logger.js'
+import {AppState} from '../AppState.js'
 export default {
   name: 'Home',
   setup() {
