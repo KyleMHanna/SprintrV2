@@ -1,6 +1,25 @@
 <template>
   <h1>hello from project_backlog_page</h1>
+  <button
+    data-bs-toggle="modal"
+    data-bs-target="#backlogItem-form"
+    class="modal-btn mx-3 my-1"
+  >
+    <i class="mdi mdi-plus-thick text-primary"> </i>
+  </button>
+
   <BacklogItem v-for="b in backlogs" :key="b.id" :backlog="b" />
+
+  <footer>
+    <Modal id="backlogItem-form">
+      <template #modal-title>
+        <h4>Create Backlog Item</h4>
+      </template>
+      <template #modal-body>
+        <BacklogItemForm />
+      </template>
+    </Modal>
+  </footer>
 </template>
 
 <script>
@@ -32,7 +51,7 @@ export default {
       }
     })
     return {
-      backlog: computed(() => AppState.currentBacklog),
+      // backlog: computed(() => AppState.currentBacklog),
       backlogs: computed(() => AppState.backlogs),
       currentProject: computed(() => AppState.currentProject)
     }

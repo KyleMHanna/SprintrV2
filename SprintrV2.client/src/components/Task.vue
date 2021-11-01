@@ -24,7 +24,7 @@ import Pop from "../utils/Pop"
 
 export default {
   props: {
-    project: {type: Object, required: true},
+    // project: {type: Object, required: true},
     task: {type: Object, required: true}
   },
   setup(props) {
