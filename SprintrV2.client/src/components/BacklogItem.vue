@@ -18,8 +18,8 @@
       </button>
     </div>
   </div>
-  <div v-for="t in tasks" :key="t.id">
-    <Task :backlog="backlog" :task="task" />
+  <div >
+    <Task v-for="t in tasks" :key="t.id" :task="t" :backlog="backlog" />
   </div>
   <footer>
     <Modal id="task-form">
@@ -39,7 +39,7 @@ import {AppState} from '../AppState.js'
 import {Backlog} from '../models/Backlog.js'
 export default {
   props: {
-    backlog: {type: Backlog, required: true}
+    backlog: {type: Object, required: true}
   },
   setup(props) {
     return {
