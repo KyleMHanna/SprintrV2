@@ -17,9 +17,11 @@
         <i class="mdi mdi-plus-thick text-danger">Task </i>
       </button>
     </div>
-  </div>
-  <div v-for="t in tasks" :key="t.id">
-    <Task :task="t" />
+    <div class="col-md-3">
+      <div v-for="t in tasks" :key="t.id">
+        <Task :task="t" />
+      </div>
+    </div>
   </div>
   <footer>
     <Modal id="task-form">
@@ -44,6 +46,7 @@ export default {
   setup(props) {
     return {
       account: computed(() => AppState.account),
+      // currentBacklog: computed(() => AppState.currentBacklog),
       tasks: computed(() => AppState.tasks.filter(t => t.backlogItemId === props.backlog.id)),
       sprint: computed(() => AppState.sprints.filter(s => s.id === props.backlog.sprintId)),
     }
