@@ -21,15 +21,12 @@ class TaskService {
     }
   }
   async createTask(projectId, backlogItemId, task) {
-    try {
-      task.backlogItemId = backlogItemId
-      const res = await api.post(`api/projects/${ projectId }/tasks`, task)
-      AppState.tasks.push(new Task(res.data, projectId, backlogItemId))
-      logger.log(res.data, '⚠ creating task')
-      return res.data.id
-    } catch (err) {
-      logger.error("Failed to make task", err)
-    }
+    task.backlogItemId = backlogItemId
+    logger.log(task)
+    const res = await api.post(`api/projects/${ projectId }/tasks`, task)
+    logger.log(res.data, '⚠ creating task')
+    AppState.tasks.push(new Task(res.data, projectId, backlogItemId))
+    return res.data.id
   }
   async deleteTask(projectId, taskId) {
     try {

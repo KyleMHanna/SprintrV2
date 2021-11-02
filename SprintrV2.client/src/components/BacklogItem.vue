@@ -19,7 +19,7 @@
     </div>
   </div>
   <div v-for="t in tasks" :key="t.id">
-    <Task :backlog="backlog" :task="task" />
+    <Task :task="t" />
   </div>
   <footer>
     <Modal id="task-form">
@@ -45,7 +45,7 @@ export default {
     return {
       account: computed(() => AppState.account),
       tasks: computed(() => AppState.tasks.filter(t => t.backlogItemId === props.backlog.id)),
-      // tasks: computed(() => AppState.tasks)
+      sprint: computed(() => AppState.sprints.filter(s => s.id === props.backlog.sprintId)),
     }
   }
 }
