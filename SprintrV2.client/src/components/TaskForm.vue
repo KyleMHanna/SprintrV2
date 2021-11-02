@@ -37,6 +37,7 @@ import {logger} from "../utils/Logger"
 import Pop from "../utils/Pop"
 import {Modal} from "bootstrap"
 import {AppState} from '../AppState.js'
+import { Backlog } from "../models/Backlog"
 
 
 export default {
