@@ -1,14 +1,10 @@
 <template>
-  <div class="row">
-    <div class="col-4">
-      <div class="card">
-        {{ task.name }}
-        {{ task.weight }}
-      </div>
-      <div class="col-1">
-        <button class="btn btn-danger" @click="deleteTask()">DELETE</button>
-      </div>
-    </div>
+  <div class="card">
+    {{ task.name }}
+    {{ task.weight }}
+  </div>
+  <div class="col-1">
+    <button class="btn btn-danger" @click="deleteTask(task.id)">DELETE</button>
   </div>
 </template>
 
@@ -19,13 +15,14 @@ import {AppState} from "../AppState"
 import {router} from "../router"
 import {taskService} from "../services/TasksService"
 import Pop from "../utils/Pop"
+import {Task} from '../models/Task.js'
 
 
 
 export default {
   props: {
     // project: {type: Object, required: true},
-    task: {type: Object, required: true}
+    task: {type: Task, required: true}
   },
   setup(props) {
     const route = useRoute()

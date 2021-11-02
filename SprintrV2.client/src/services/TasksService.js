@@ -30,8 +30,8 @@ class TaskService {
   }
   async deleteTask(projectId, taskId) {
     try {
-      const res = await api.get(`api/projects/${ projectId }/tasks/${ taskId }`)
-      AppState.tasks = AppState.tasks.filter(t => t.id === taskId)
+      const res = await api.delete(`api/projects/${ projectId }/tasks/${ taskId }`)
+      AppState.tasks = AppState.tasks.filter(t => t.id !== taskId)
     } catch (err) {
       logger.error("No task deleted", err)
     }
