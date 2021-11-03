@@ -4,7 +4,7 @@ import { BadRequest, Forbidden } from '../utils/Errors.js'
 class NotesService {
   // FIXME get passing on postman
   async getNotes(projectId) {
-    const notes = await dbContext.Note.find({ projectId }).populate('creator', 'name picture')
+    const notes = await dbContext.Note.find().populate('creator', 'name picture')
     if (!notes) {
       throw new BadRequest('No notes found')
     }
