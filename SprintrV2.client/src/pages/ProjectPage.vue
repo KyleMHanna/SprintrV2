@@ -75,8 +75,8 @@ export default {
     return {
       account: computed(() => AppState.account),
       project: computed(() => AppState.project),
-      sprints: computed(() => AppState.sprints),
       backlog: computed(() => AppState.backlogs),
+      sprints: computed(() => AppState.sprints),
       currentProject: computed(() => AppState.currentProject),
     }
   }

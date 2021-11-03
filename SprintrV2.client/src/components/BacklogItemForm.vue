@@ -62,7 +62,7 @@ export default {
         try {
           await backlogService.createBacklogItem(route.params.projectId, editable.value)
           editable.value = {}
-          Pop.toast('Backlog Item created successfully', 'success')
+
           const modal = Modal.getInstance(document.getElementById('backlogItem-form'))
           modal.hide()
         } catch (error) {
