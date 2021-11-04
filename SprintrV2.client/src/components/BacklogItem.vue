@@ -11,18 +11,19 @@
     <div class="col-1">
       <button
         data-bs-toggle="modal"
-        data-bs-target="#task-form"
+        :data-bs-target="'#task-form-'+ backlog.id"
         class="modal-btn mx-1 my-1"
       >
         <i class="mdi mdi-plus-thick text-danger">Task </i>
       </button>
     </div>
   </div>
-  <div v-for="t in tasks" :key="t.id">
-    <Task v-for="t in tasks" :key="t.id " />
+  <div >
+    <Task v-for="t in tasks" :key="t.id" :task="t"  />
   </div>
   <footer>
-    <Modal id="task-form">
+  <!-- this makes the modal id match what the data target is looking for -->
+    <Modal :id="'task-form-' + backlog.id " :backlog="backlog" >
       <template #modal-title>
         <h4>Create task</h4>
       </template>
@@ -43,8 +44,9 @@ export default {
   },
   setup(props) {
     return {
+   
       account: computed(() => AppState.account),
-      tasks: computed(() => AppState.tasks.filter(t => t.backlogItemId === props.backlog.id)),
+      tasks: computed(() => AppState.tasks.filter(t => t.backlogItemId === AppState.backlogs.id)),
       // tasks: computed(() => AppState.tasks)
     }
   }

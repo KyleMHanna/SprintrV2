@@ -44,6 +44,7 @@ export default {
         await projectsService.getProjectById(route.params.projectId)
         await taskService.getTasks(route.params.projectId)
         //FIXME notes have backend issue
+        //FIXED
         // await notesService.getNotes(route.params.projectId)
         await sprintsService.getSprints(route.params.projectId)
       } catch (error) {
@@ -51,7 +52,7 @@ export default {
       }
     })
     return {
-      // backlog: computed(() => AppState.currentBacklog),
+      backlog: computed(() => AppState.currentBacklog),
       backlogs: computed(() => AppState.backlogs),
       currentProject: computed(() => AppState.currentProject)
     }

@@ -23,6 +23,7 @@ class TaskService {
   async createTask(projectId, backlogItemId, task) {
     try {
       task.backlogItemId = backlogItemId
+      debugger
       const res = await api.post(`api/projects/${projectId}/tasks`, task)
       AppState.tasks = [...AppState.tasks, new Task(res.data, projectId, backlogItemId)]
       logger.log(res.data, '⚠ creating task')

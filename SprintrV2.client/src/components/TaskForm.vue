@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import {ref} from "@vue/reactivity"
+import {computed, ref} from "@vue/reactivity"
 import {useRoute} from "vue-router"
 import {taskService} from "../services/TasksService"
 import {logger} from "../utils/Logger"
@@ -40,12 +40,13 @@ import {AppState} from '../AppState.js'
 import { Backlog } from "../models/Backlog"
 
 
+
 export default {
+  //NOTE this prop passes the same backlog id to every new created task regardless of which button is used to make
   props: {
     backlog: {type: Object, required: true}
   },
   setup(props) {
-
     const editable = ref({})
     const route = useRoute()
     return {
@@ -53,7 +54,9 @@ export default {
       route,
       async createTask() {
         try {
-          // editable.value.backlogItemId = AppState.currentBacklog.id
+          logger.log(props.backlog.id, "this is the backlog id")
+          editable.value.backlogItemId = props.backlog.id
+          
           await taskService.createTask(route.params.projectId, props.backlog.id, editable.value)
           editable.value = {}
           // Pop.toast('task made', success)

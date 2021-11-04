@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card bg-secondary">
     {{ task.name }}
     {{ task.weight }}
   </div>
