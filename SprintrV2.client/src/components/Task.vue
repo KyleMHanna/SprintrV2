@@ -1,9 +1,16 @@
 <template>
-  <div class="card bg-secondary">
+<div class="card justify-content-between
+">
+  <div class="card-header bg-secondary text-center">
+    <button  class="btn btn-danger" v-if="task.creatorId === account.id" @click="deleteTask(task.id)">DELETE</button>
     {{ task.name }}
-    {{ task.weight }}
-    <button  class="btn btn-danger" @click="deleteTask(task.id)">DELETE</button>
   </div>
+  <div class="card-body">
+   Weight: {{ task.weight }}
+  </div>
+
+  
+</div>
   <!-- <div class="col-1">
   </div> -->
 </template>
