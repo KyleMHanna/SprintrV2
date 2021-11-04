@@ -2,10 +2,10 @@
   <div class="card bg-secondary">
     {{ task.name }}
     {{ task.weight }}
+    <button  class="btn btn-danger" @click="deleteTask(task.id)">DELETE</button>
   </div>
-  <div class="col-1">
-    <button class="btn btn-danger" @click="deleteTask(task.id)">DELETE</button>
-  </div>
+  <!-- <div class="col-1">
+  </div> -->
 </template>
 
 <script>
@@ -36,7 +36,9 @@ export default {
       },
       catch(error) {
         Pop.toast(error, 'error')
-      }
+      },
+      account: computed(()=> AppState.account),
+      tasks: computed(() => AppState.tasks)
     }
 
 

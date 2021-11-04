@@ -60,9 +60,9 @@ export default {
           await taskService.createTask(route.params.projectId, props.backlog.id, editable.value)
           editable.value = {}
           // Pop.toast('task made', success)
-          const modal = Modal.getInstance(document.getElementById('task-form')
-          )
-          modal.hide()
+          // const modal = Modal.getInstance(document.getElementById("'task-form-'" + backlog.id )
+          // )
+          // modal.hide()
         } catch (error) {
           Pop.toast(error.message, 'error')
           logger.log('error')
