@@ -13,6 +13,15 @@
           ></i>
           Sprint
         </button>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#backlogItem-form"
+          class="btn create-button text-primary"
+        >
+          <i class="mdi mdi-plus-box-multiple-outline mdi-24px text-primary">
+            Backlog</i
+          >
+        </button>
       </div>
       <div class="col-md-10 card">
         <div class="card-header">
@@ -42,7 +51,14 @@
       </div>
     </div>
   </div>
-
+  <Modal id="backlogItem-form">
+    <template #modal-title>
+      <h4>Create Backlog Item</h4>
+    </template>
+    <template #modal-body>
+      <BacklogItemForm />
+    </template>
+  </Modal>
   <Modal id="Sprint-modal">
     <template #modal-title> Add Sprint </template>
     <template #modal-body>

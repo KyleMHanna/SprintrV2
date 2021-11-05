@@ -26,12 +26,12 @@ export default {
   props: {
     sprint: {type: Sprint, required: true}
   },
-  setup() {
+  setup(props) {
     const route = useRoute()
     return {
       account: computed(() => AppState.account),
       currentProject: computed(() => AppState.currentProject),
-      backlogs: computed(() => AppState.backlogs.filter(b => b.sprintId === AppState.currentSprint.id)),
+      backlogs: computed(() => AppState.backlogs.filter(b => b.sprintId === props.sprint.id)),
     }
   }
 

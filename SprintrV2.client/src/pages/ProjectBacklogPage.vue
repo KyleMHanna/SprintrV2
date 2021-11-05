@@ -1,25 +1,9 @@
 <template>
-  <h1>hello from project_backlog_page</h1>
-  <button
-    data-bs-toggle="modal"
-    data-bs-target="#backlogItem-form"
-    class="modal-btn mx-3 my-1"
-  >
-    <i class="mdi mdi-plus-thick text-primary"> </i>
-  </button>
-
-  <BacklogItem v-for="b in backlogs" :key="b.id" :backlog="b" />
-
-  <footer>
-    <Modal id="backlogItem-form">
-      <template #modal-title>
-        <h4>Create Backlog Item</h4>
-      </template>
-      <template #modal-body>
-        <BacklogItemForm />
-      </template>
-    </Modal>
-  </footer>
+  <div class="container-fluid">
+    <!-- <div class="row"> -->
+    <BacklogItem v-for="b in backlogs" :key="b.id" :backlog="b" />
+    <!-- </div> -->
+  </div>
 </template>
 
 <script>
@@ -43,9 +27,7 @@ export default {
         await backlogService.getBacklogs(route.params.projectId)
         await projectsService.getProjectById(route.params.projectId)
         await taskService.getTasks(route.params.projectId)
-        //FIXME notes have backend issue
-        //FIXED
-        // await notesService.getNotes(route.params.projectId)
+        await notesService.getNotes(route.params.projectId)
         await sprintsService.getSprints(route.params.projectId)
       } catch (error) {
         Pop.toast(error.message, 'error', 'from project backlogpage')
@@ -55,6 +37,7 @@ export default {
       backlog: computed(() => AppState.currentBacklog),
       backlogs: computed(() => AppState.backlogs),
       currentProject: computed(() => AppState.currentProject)
+      // note: computed(() => AppState.notes)
     }
   }
 }
