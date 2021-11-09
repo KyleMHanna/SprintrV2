@@ -24,7 +24,7 @@
         </button>
       </div>
       <div class="col-md-10 card">
-        <div class="card-header">
+        <div class="card-header bg bg-secondary">
           <p v-if="currentProject.creator">
             Project lead:
             <img
@@ -40,6 +40,21 @@
           {{ currentProject.description }}
           <p>{{ new Date(currentProject.createdAt).toDateString() }}</p>
         </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample" v-for="s in sprints" :key="s.id" :sprints="sprint">
+  <div class="accordion-item" >
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#flush-collapseOne'+ sprints.id" aria-expanded="false" aria-controls="flush-collapseOne">Sprint
+      </button>
+    </h2>
+    <div :id="'#flush-collapseOne' + sprints.id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+       {{ sprints.name}}
+
+      </div>
+    </div>
+  </div>
+  
+</div>
       </div>
       <div class="col-md-1">
         <router-link :to="{ name: 'Project.Sprint' }" class="text-center">
@@ -90,7 +105,7 @@ export default {
     })
     return {
       account: computed(() => AppState.account),
-      project: computed(() => AppState.project),
+      project: computed(() => AppState.projects),
       backlog: computed(() => AppState.backlogs),
       sprints: computed(() => AppState.sprints),
       currentProject: computed(() => AppState.currentProject),

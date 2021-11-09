@@ -18,8 +18,7 @@
 
     <div>
      
-    <BacklogItem v-for="b in backlogs" :key="b.id" :backlog="b" >
-    </BacklogItem>
+  
     </div>
   </div>
 </template>
@@ -35,8 +34,8 @@ import { sprintsService } from "../services/SprintsService.js"
 
 export default {
   props: {
-    sprint: {type: Sprint, required: true},
-    backlog:{type: Backlog, required: false}
+   sprint: {type: Sprint, required: true}
+    
   },
   setup(props) {
     const route = useRoute()
@@ -54,7 +53,8 @@ export default {
       currentProject: computed(() => AppState.currentProject),
       sprintbacklogs: computed(() => AppState.backlogs.filter(b => b.sprintId === props.sprint.id)),
       backlogs: computed(() => AppState.backlogs.filter(b => b.backlogItemId === route.params.projectId)),
-      currentsprint: computed(() => AppState.currentSprint)
+      currentsprint: computed(() => AppState.currentSprint),
+      sprint: computed(() => AppState.sprints)
     }
   }
 

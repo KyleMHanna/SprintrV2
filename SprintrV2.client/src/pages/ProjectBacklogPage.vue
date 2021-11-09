@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <!-- <div class="row"> -->
-    <BacklogItem v-for="b in backlogs" :key="b.id" :backlog="b" />
+    <BacklogItem  v-for="b in backlogs" :key="b.id" :backlog="b"/>
     <!-- </div> -->
   </div>
 </template>
@@ -16,11 +16,17 @@ import {sprintsService} from "../services/SprintsService"
 import {taskService} from "../services/TasksService"
 import Pop from "../utils/Pop"
 import {AppState} from "../AppState"
+import { Backlog } from "../models/Backlog"
+import { Sprint } from "../models/Sprint"
 
 export default {
-
+  props:{
+  //  backlogs: {type: Backlog, required: true},
+    // sprint: {type: Sprint, required: true},
+  },
   name: 'ProjectBacklogPage',
   setup() {
+    
     const route = useRoute()
     onMounted(async () => {
       try {
@@ -34,6 +40,7 @@ export default {
       }
     })
     return {
+      sprint: computed(() => AppState.sprints),
       backlog: computed(() => AppState.currentBacklog),
       backlogs: computed(() => AppState.backlogs),
       currentProject: computed(() => AppState.currentProject)

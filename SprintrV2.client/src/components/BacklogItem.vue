@@ -1,7 +1,8 @@
 <template>
-  <!-- <h1>{{backlogs.name}}</h1> -->
-  <div class="row">
-    <div class="col-md-3">
+<div class="row bg bg-secondary">
+  <!-- <SprintAccordian  /> -->
+
+    <div class="col-md-3 ">
       <h1>{{ backlog.name }}</h1>
     </div>
     <div class="col-md-3">
@@ -70,12 +71,23 @@ import {Backlog} from '../models/Backlog.js'
 import {backlogService} from "../services/BacklogService.js"
 import {useRoute} from "vue-router"
 import Pop from "../utils/Pop.js"
+import { Sprint } from "../models/Sprint.js"
+import { onMounted } from "@vue/runtime-core"
+import { sprintsService } from "../services/SprintsService.js"
 
 export default {
   props: {
-    backlog: {type: Backlog, required: true}
+    backlog: {type: Backlog, required: true},
+    // sprint:{type: Sprint , required: true}
   },
   setup(props) {
+    onMounted(async () =>{
+      try {
+        await sprintsService.getSprints(route.params.projectId)
+      } catch (error) {
+        
+      }
+    })
     const route = useRoute()
     return {
       async deleteBacklog() {
@@ -85,11 +97,21 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
+       async moveBacklogToSprint(backlogId){
+        try {
+          debugger
+          await sprintsService.moveBacklogToSprint(route.params.projectId, props.sprint.id, backlogId )
+          
+        } catch (error) {
+          Pop.toast(error, "Failed to move backlog")
+        }
+      },
       account: computed(() => AppState.account),
       task: computed(() => AppState.tasks.filter(t => t.backlogItemId === props.backlog.id)),
       // task: computed(() => AppState.tasks),
-      backlogs: computed(() => AppState.backlogs),
+      backlog: computed(() => AppState.backlogs),
       note: computed(() => AppState.notes.filter(note => note.backlogItemId === props.backlog.id)),
+      sprint: computed(() => AppState.sprints)
     }
   }
 }
