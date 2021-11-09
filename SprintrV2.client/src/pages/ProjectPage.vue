@@ -40,21 +40,23 @@
           {{ currentProject.description }}
           <p>{{ new Date(currentProject.createdAt).toDateString() }}</p>
         </div>
-        <div class="accordion accordion-flush" id="accordionFlushExample" v-for="s in sprints" :key="s.id" :sprints="sprint">
-  <div class="accordion-item" >
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#flush-collapseOne'+ sprints.id" aria-expanded="false" aria-controls="flush-collapseOne">Sprint
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        Accordion Item #1
       </button>
     </h2>
-    <div :id="'#flush-collapseOne' + sprints.id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-       {{ sprints.name}}
-
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body" v-for="s in sprints" :key="s.id" :value="s.id">
+        {{s.name}}
+        <button> Add to sprint modal</button>
       </div>
     </div>
   </div>
+  </div>
+        
   
-</div>
       </div>
       <div class="col-md-1">
         <router-link :to="{ name: 'Project.Sprint' }" class="text-center">
@@ -107,7 +109,7 @@ export default {
       account: computed(() => AppState.account),
       project: computed(() => AppState.projects),
       backlog: computed(() => AppState.backlogs),
-      sprints: computed(() => AppState.sprints),
+      sprints: computed(() => AppState.sprints.filter(s => s.projectId === AppState.currentProject.id)),
       currentProject: computed(() => AppState.currentProject),
     }
   }
