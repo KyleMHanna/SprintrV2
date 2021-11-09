@@ -51,7 +51,8 @@ class TaskService {
   }
   async checkTask(projectId, taskId, taskData) {
     const res = await api.put(`api/projects/${ projectId }/tasks/${ taskId }`, taskData)
-    AppState.tasks = new Task(res.data)
+
+    // AppState.tasks = res.taskData.map(t => new Task(t))
     logger.log('if checkbox', res.data)
     logger.log('taskData', taskData)
   }

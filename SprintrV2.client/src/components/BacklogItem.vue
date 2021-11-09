@@ -97,7 +97,7 @@ import Pop from "../utils/Pop.js"
 
 export default {
   props: {
-    backlog: {type: Object, required: true}
+    backlog: {type: Backlog, required: true}
   },
   setup(props) {
     const route = useRoute()
@@ -120,7 +120,7 @@ export default {
       task: computed(() => AppState.tasks.filter(t => t.backlogItemId === props.backlog.id)),
       // task: computed(() => AppState.tasks),
       backlogs: computed(() => AppState.backlogs),
-      note: computed(() => AppState.notes.filter(note => note.backlogItemId === props.backlog.id)),
+      note: computed(() => AppState.notes.filter(note => note.backlogItemId === props.backlog.id))
     }
   }
 }
