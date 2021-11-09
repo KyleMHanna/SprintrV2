@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row bg-secondary">
     <div class="col-md-3">
       <h1>{{ backlog.name }}</h1>
     </div>
