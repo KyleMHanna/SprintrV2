@@ -15,6 +15,8 @@
       <input
         @change="checked()"
         v-model="editable.isComplete"
+         true-value="true"
+          false-value="false"
         type="checkbox"
       />
       <div v-if="task.isComplete === true" class="text-success">
