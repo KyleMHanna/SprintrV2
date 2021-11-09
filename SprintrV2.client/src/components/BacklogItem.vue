@@ -21,7 +21,7 @@
         data-bs-target="#assign-backlog-modal"
         @click="getCurrentBacklogId(backlog.id)"
       >
-        Add backlog to sprint modal
+        <i class="mdi mdi-plus-thick text-primary">Assign Sprint </i>
       </button>
       <button
         data-bs-toggle="modal"
@@ -39,10 +39,10 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
-        <Task v-for="t in task" :key="t.id" :task="t" />
+        <Task v-for="t in tasks" :key="t.id" :task="t" />
       </div>
       <div class="col-md-6">
-        <Note v-for="n in note" :key="n.id" :note="n" />
+        <Note v-for="n in notes" :key="n.id" :note="n" />
       </div>
     </div>
   </div>
@@ -117,10 +117,10 @@ export default {
         }
       },
       account: computed(() => AppState.account),
-      task: computed(() => AppState.tasks.filter(t => t.backlogItemId === props.backlog.id)),
+      tasks: computed(() => AppState.tasks.filter(t => t.backlogItemId === props.backlog.id)),
       // task: computed(() => AppState.tasks),
       backlogs: computed(() => AppState.backlogs),
-      note: computed(() => AppState.notes.filter(note => note.backlogItemId === props.backlog.id))
+      notes: computed(() => AppState.notes.filter(note => note.backlogItemId === props.backlog.id))
     }
   }
 }
