@@ -1,13 +1,5 @@
 <template>
   <div class="row bg-secondary">
-    <Modal :id="'add-to-sprint-' + backlog.id" :backlog="backlog">
-      <template #modal-title>
-        <h4>Create task</h4>
-      </template>
-      <template #modal-body>
-        <TaskForm :backlog="backlog" />
-      </template>
-    </Modal>
     <div class="col-md-3">
       <h1>{{ backlog.name }}</h1>
     </div>
@@ -23,6 +15,13 @@
         class="modal-btn mx-1 my-1"
       >
         <i class="mdi mdi-plus-thick text-danger">Task </i>
+      </button>
+      <button
+        data-bs-toggle="modal"
+        data-bs-target="#assign-backlog-modal"
+        @click="getCurrentBacklogId(backlog.id)"
+      >
+        Add backlog to sprint modal
       </button>
       <button
         data-bs-toggle="modal"
@@ -49,6 +48,24 @@
   </div>
 
   <footer>
+    <!-- modal for adding task to  backlog  -->
+    <Modal :id="'add-to-sprint-' + backlog.id" :backlog="backlog">
+      <template #modal-title>
+        <h4>Create task</h4>
+      </template>
+      <template #modal-body>
+        <TaskForm :backlog="backlog" />
+      </template>
+    </Modal>
+    <!-- modal for assigning backlog to sprint -->
+    <Modal id="assign-backlog-modal">
+      <template #modal-title>
+        <h4>{{ backlog.name }}</h4>
+      </template>
+      <template #modal-body>
+        <BacklogDetails />
+      </template>
+    </Modal>
     <!-- this makes the modal id match what the data target is looking for -->
     <Modal :id="'task-form-' + backlog.id" :backlog="backlog">
       <template #modal-title>
@@ -80,7 +97,7 @@ import Pop from "../utils/Pop.js"
 
 export default {
   props: {
-    backlog: {type: Backlog, required: true}
+    backlog: {type: Object, required: true}
   },
   setup(props) {
     const route = useRoute()
@@ -88,6 +105,13 @@ export default {
       async deleteBacklog() {
         try {
           await backlogService.deleteBacklogItem(route.params.projectId, props.backlog.id)
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+        }
+      },
+      async getCurrentBacklogId(backlogId) {
+        try {
+          await backlogService.setBacklogItem(backlogId)
         } catch (error) {
           Pop.toast(error.message, 'error')
         }

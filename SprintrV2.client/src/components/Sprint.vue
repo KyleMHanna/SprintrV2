@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-md-8">
-          <!-- <button @click="moveBacklogToSprint()">Add Backlog to Sprint</button> -->
+      <!-- <button @click="moveBacklogToSprint()">Add Backlog to Sprint</button> -->
       <h3>{{ sprint.name }}</h3>
       <p>
         <small
@@ -14,12 +14,9 @@
       </p>
       <p v-else><i class="mdi mdi-circle text-danger"></i></p>
     </div>
-    <h1>PROJECT BACKLOGS</h1>
 
     <div>
-     
-    <BacklogItem v-for="b in backlogs" :key="b.id" :backlog="b" >
-    </BacklogItem>
+      <BacklogItem v-for="b in backlogs" :key="b.id" :backlog="b" />
     </div>
   </div>
 </template>
@@ -29,32 +26,33 @@ import {computed} from '@vue/reactivity'
 import {useRoute} from 'vue-router'
 import {AppState} from '../AppState.js'
 import {Sprint} from '../models/Sprint.js'
-import { Backlog } from "../models/Backlog.js"
+import {Backlog} from "../models/Backlog.js"
 import Pop from "../utils/Pop.js"
-import { sprintsService } from "../services/SprintsService.js"
+import {sprintsService} from "../services/SprintsService.js"
 
 export default {
   props: {
     sprint: {type: Sprint, required: true},
-    backlog:{type: Backlog, required: false}
+    backlog: {type: Backlog, required: false}
   },
   setup(props) {
     const route = useRoute()
     return {
-      async moveBacklogToSprint(backlogId){
+      async moveBacklogToSprint(backlogId) {
         try {
-          debugger
-          await sprintsService.moveBacklogToSprint(route.params.projectId, props.sprint.id, backlogId )
-          
+
+          await sprintsService.moveBacklogToSprint(route.params.projectId, props.sprint.id, backlogId)
+
         } catch (error) {
           Pop.toast(error, "Failed to move backlog")
         }
       },
       account: computed(() => AppState.account),
       currentProject: computed(() => AppState.currentProject),
-      sprintbacklogs: computed(() => AppState.backlogs.filter(b => b.sprintId === props.sprint.id)),
-      backlogs: computed(() => AppState.backlogs.filter(b => b.backlogItemId === route.params.projectId)),
-      currentsprint: computed(() => AppState.currentSprint)
+      backlogs: computed(() => AppState.backlogs.filter(b => b.sprintId === props.sprint.id)),
+      backlog: computed(() => AppState.backlogs.filter(b => b.backlogItemId === route.params.projectId)),
+      currentsprint: computed(() => AppState.currentSprint),
+
     }
   }
 

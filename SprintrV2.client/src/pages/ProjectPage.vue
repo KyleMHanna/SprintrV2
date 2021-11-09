@@ -40,24 +40,6 @@
           {{ currentProject.description }}
           <p>{{ new Date(currentProject.createdAt).toDateString() }}</p>
         </div>
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body" v-for="s in sprints" :key="s.id" :value="s.id">
-        {{s.name}}
-        <button data-bs-toggle="modal" data-bs-target="#assign-backlog-modal"> Add to sprint modal</button>
-       
-      </div>
-    </div>
-  </div>
-  </div>
-        
-  
       </div>
       <div class="col-md-1">
         <router-link :to="{ name: 'Project.Sprint' }" class="text-center">
@@ -69,14 +51,6 @@
       </div>
     </div>
   </div>
-   <Modal id="assign-backlog-modal">
-    <template #modal-title>
-      <h4>Create Backlog Item</h4>
-    </template>
-    <template #modal-body>
-      <!-- <BacklogItemForm /> -->
-    </template>
-  </Modal>
   <Modal id="backlogItem-form">
     <template #modal-title>
       <h4>Create Backlog Item</h4>
@@ -101,6 +75,7 @@ import {projectsService} from '../services/ProjectsService.js'
 import {useRoute} from 'vue-router'
 import Pop from '../utils/Pop.js'
 import {sprintsService} from '../services/SprintsService.js'
+import {backlogService} from '../services/BacklogService.js'
 export default {
 
   name: 'ProjectPage',
@@ -120,6 +95,13 @@ export default {
       backlog: computed(() => AppState.backlogs),
       sprints: computed(() => AppState.sprints.filter(s => s.projectId === AppState.currentProject.id)),
       currentProject: computed(() => AppState.currentProject),
+      // async getCurrentBacklogId(backlogId) {
+      //   try {
+      //     await backlogService.setBacklogItem(backlogId)
+      //   } catch (error) {
+      //     Pop.toast(error.message, 'error')
+      //   }
+      // }
     }
   }
 }
