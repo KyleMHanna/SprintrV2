@@ -50,7 +50,8 @@
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body" v-for="s in sprints" :key="s.id" :value="s.id">
         {{s.name}}
-        <button> Add to sprint modal</button>
+        <button data-bs-toggle="modal" data-bs-target="#assign-backlog-modal"> Add to sprint modal</button>
+       
       </div>
     </div>
   </div>
@@ -68,6 +69,14 @@
       </div>
     </div>
   </div>
+   <Modal id="assign-backlog-modal">
+    <template #modal-title>
+      <h4>Create Backlog Item</h4>
+    </template>
+    <template #modal-body>
+      <!-- <BacklogItemForm /> -->
+    </template>
+  </Modal>
   <Modal id="backlogItem-form">
     <template #modal-title>
       <h4>Create Backlog Item</h4>
