@@ -1,5 +1,4 @@
 <template>
-  <!-- <h1>{{backlogs.name}}</h1> -->
   <div class="row">
     <div class="col-md-3">
       <h1>{{ backlog.name }}</h1>
