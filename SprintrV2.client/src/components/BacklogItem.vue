@@ -1,5 +1,13 @@
 <template>
   <div class="row bg-secondary">
+    <Modal :id="'add-to-sprint-' + backlog.id" :backlog="backlog">
+      <template #modal-title>
+        <h4>Create task</h4>
+      </template>
+      <template #modal-body>
+        <TaskForm :backlog="backlog" />
+      </template>
+    </Modal>
     <div class="col-md-3">
       <h1>{{ backlog.name }}</h1>
     </div>
