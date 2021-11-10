@@ -3,7 +3,7 @@
 @import "./_overrides.scss";
 @import "./utilities.scss";
 @import "./loaders.scss";
-
+@import "bootswatch/dist/lux/bootstrap.min.css";
 #app {
   display: flex;
   flex-direction: column;
