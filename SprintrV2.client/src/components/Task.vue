@@ -1,12 +1,12 @@
 <template>
-  <div class="card justify-content-between">
+  <div class="card justify-content-between m-3">
     <div class="card-header bg-secondary text-center">
       <button
-        class="btn btn-danger"
+        class="btn"
         v-if="task.creatorId === account.id"
         @click="deleteTask(task.id)"
       >
-        DELETE
+        <i class="mdi mdi-delete text-danger selectable"></i>
       </button>
       {{ task.name }}
     </div>

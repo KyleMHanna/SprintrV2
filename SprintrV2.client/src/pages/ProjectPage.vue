@@ -1,5 +1,4 @@
 <template>
-  <h1 class="text-center">hello from ProjectPage</h1>
   <div class="container text-center">
     <div class="row justify-content-center">
       <div class="col-md-1">

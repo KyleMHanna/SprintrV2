@@ -1,5 +1,5 @@
 <template>
-  <div class="card col-11 px-2 pt-2 mb-1">
+  <div class="card col-11 px-2 pt-2 m-3">
     <div class="row">
       <div class="col d-flex align-items-center">
         <img :src="note.creator.picture" alt="" />
@@ -10,13 +10,16 @@
     </div>
     <div class="row">
       <p>{{ note.body }}</p>
+      <div
+        class="d-flex justify-content-center"
+        v-if="account.id === note.creatorId"
+      >
+        <i
+          class="mdi mdi-delete text-danger f-20"
+          @click="deleteNote(note.id)"
+        ></i>
+      </div>
     </div>
-  </div>
-  <div
-    class="col-1 d-flex justify-content-center"
-    v-if="account.id === note.creatorId"
-  >
-    <i class="mdi mdi-delete f-20" @click="deleteNote(note.id)"></i>
   </div>
 </template>
 

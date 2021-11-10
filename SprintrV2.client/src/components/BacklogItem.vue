@@ -1,5 +1,5 @@
 <template>
-  <div class="row bg-secondary">
+  <div class="row bg-secondary m-auto">
     <div class="col-md-1">
       <span class="px-2">
         {{ backlog.weightTotal }}<i class="mdi mdi-weight f-20 px-2"></i
@@ -37,7 +37,7 @@
       </button>
     </div>
     <div class="col-1" @click="deleteBacklog()">
-      <i class="mdi mdi-delete text-danger"> delete</i>
+      <i class="mdi mdi-delete text-danger selectable"></i>
     </div>
   </div>
 

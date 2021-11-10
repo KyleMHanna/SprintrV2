@@ -30,7 +30,7 @@
       </div>
       <div class="col-md-1">
         <div
-          class="on-hover"
+          class=""
           style="right: 1rem; top: 1rem"
           v-if="account.id == project.creatorId"
         >
@@ -46,14 +46,14 @@
 
 <script>
 import Pop from '../utils/Pop.js'
-import { projectsService } from '../services/ProjectsService.js'
-import { Project } from '../models/Project.js'
-import { computed } from '@vue/reactivity'
-import { AppState } from '../AppState.js'
+import {projectsService} from '../services/ProjectsService.js'
+import {Project} from '../models/Project.js'
+import {computed} from '@vue/reactivity'
+import {AppState} from '../AppState.js'
 
 export default {
   props: {
-    project: { type: Object, required: true }
+    project: {type: Object, required: true}
   },
   setup(props) {
     return {
@@ -62,7 +62,7 @@ export default {
       async deleteProject(projectId) {
         try {
           const yes = await Pop.confirm('Are you sure you')
-          if (!yes) { return }
+          if (!yes) {return }
           await projectsService.deleteProject(props.project.id)
         } catch (error) {
           Pop.toast(error.message, 'error')
