@@ -12,6 +12,7 @@
     </div>
     <div class="card-body">Weight: {{ task.weight }}</div>
     <div class="card-body">
+      <p>Completed:</p>
       <input
         @change="checked()"
         v-model="editable.isComplete"
@@ -74,4 +75,5 @@ export default {
 </script>
 
 <style>
+
 </style>

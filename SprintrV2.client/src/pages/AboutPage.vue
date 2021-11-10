@@ -25,18 +25,18 @@
       <img src="../assets/img/city.jpg" alt="sample87" />
       <figcaption>
         <img
-          src="../assets/img/Kyle.jpg"
+          src="../assets/img/Lance.jpg"
           alt="profile-sample4"
           class="profile"
         />
         <h2>Kyle Hanna<span>Full Stack Developer</span></h2>
         <!-- <p>Placeholder Bio </p> -->
-        <a href="https://www.linkedin.com/in/kyle-m-hanna/"
+        <a href="https://www.linkedin.com/in/lancehefner/"
            class="follow"
            target="_blank"
            rel="noreferrer noopener"
         >Linkedin</a>
-        <a href="https://github.com/KyleMHanna" class="info" target="_blank" rel="noreferrer noopener">GitHub</a>
+        <a href="https://github.com/HefnerLance" class="info" target="_blank" rel="noreferrer noopener">GitHub</a>
       </figcaption>
     </figure>
     </div>
