@@ -47,9 +47,9 @@ export default {
           editable.value.projectId = route.params.id
           await notesService.addNote(route.params.projectId, editable.value)
           editable.value = {}
-          Pop.toast('Note Created!', 'success')
-          // const modal = Modal.getInstance(document.getElementById('note-form'))
-          // modal.hide()
+      
+          const modal = Modal.getInstance(document.getElementById('note-form-' + props.backlog.id))
+          modal.hide()
           logger.log(props, editable)
         } catch (error) {
           logger.log(error)
