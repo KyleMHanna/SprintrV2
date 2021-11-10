@@ -1,5 +1,5 @@
 <template>
-  <div class="row bg-secondary m-auto">
+  <div class="row bg-primary m-auto">
     <div class="col-md-1">
       <span class="px-2">
         {{ backlog.weightTotal }}<i class="mdi mdi-weight f-20 px-2"></i
@@ -131,5 +131,5 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css" scoped>
 </style>

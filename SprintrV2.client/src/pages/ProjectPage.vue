@@ -23,7 +23,7 @@
         </button>
       </div>
       <div class="col-md-10 card">
-        <div class="card-header bg bg-secondary">
+        <div class="card-header bg bg-primary">
           <p v-if="currentProject.creator">
             Project lead:
             <img
