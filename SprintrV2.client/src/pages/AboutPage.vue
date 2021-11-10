@@ -20,7 +20,7 @@
         <a href="https://github.com/KyleMHanna" class="info" target="_blank" rel="noreferrer noopener">GitHub</a>
       </figcaption>
     </figure>
-
+<!-- Lance info bellow  -->
         <figure class="aboutCard">
       <img src="../assets/img/city.jpg" alt="sample87" />
       <figcaption>
