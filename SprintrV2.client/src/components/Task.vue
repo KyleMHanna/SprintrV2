@@ -1,6 +1,6 @@
 <template>
   <div class="card justify-content-between m-3">
-    <div class="card-header bg-secondary text-center">
+    <div class="card-header bg-secondary text-center " :class="{'bg-danger' : (task.weight >= 4)}, {'bg-warning' : (task.weight == 3)}, {'bg-success' : (task.weight < 3)}">
       <button
         class="btn"
         v-if="task.creatorId === account.id"
