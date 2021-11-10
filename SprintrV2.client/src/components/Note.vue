@@ -1,15 +1,15 @@
 <template>
-  <div class="card col-11 px-2 pt-2 m-3">
+  <div class="card col-11 px-2 pt-2 m-3 sticky">
     <div class="row">
       <div class="col d-flex align-items-center">
-        <img :src="note.creator.picture" alt="" />
-        <h6 class="ms-2">
+        <img :src="note.creator.picture" alt="" style="width: 45px" />
+        <p class="ms-2">
           {{ note.creator.name }}
-        </h6>
+        </p>
       </div>
     </div>
     <div class="row">
-      <p>{{ note.body }}</p>
+      <h1>{{ note.body }}</h1>
       <div
         class="d-flex justify-content-center"
         v-if="account.id === note.creatorId"
@@ -56,5 +56,41 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang ="css">
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+
+.sticky {
+  background: linear-gradient(#fefcaf, #fffeda);
+  padding: 5px 20px 10px 20px;
+
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+
+  font: 13px "Lucida Grande", Serif;
+}
+
+/* .sticky h1 {
+  font-family: "Permanent Marker", cursive;
+  color: #eb2626;
+} */
+
+.sticky:before,
+.sticky:after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  width: 70%;
+  max-width: 300px;
+  max-height: 100px;
+  height: 55%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: skew(-15deg) rotate(-6deg);
+}
+
+.sticky:after {
+  left: auto;
+  right: 20px;
+  transform: skew(15deg) rotate(6deg);
+}
 </style>
