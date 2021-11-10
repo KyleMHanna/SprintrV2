@@ -1,19 +1,22 @@
 <template>
   <div
     class="row  m-auto"
-    :class="{ 'bg-danger': (backlog.weightTotal > 25) },{ 'bg-info':(backlog.weightTotal >= 15 ) },{ 'bg-success': (backlog.weightTotal >=5)}"
+    :class="{ 'colorred': (backlog.weightTotal > 15) },
+     { 'bg-info':(backlog.weightTotal <= 15 && backlog.weightTotal >5 ) },
+     { 'bg-success': (backlog.weightTotal <=5)},
+     { 'bg-dark text-white': (backlog.weightTotal == 0)}"
   >
     <div class="col-md-1">
-      <span class="px-2">
+      <span class="px-2" :class="{'text-light': (backlog.weightTotal == 0)}">
         {{ backlog.weightTotal }}<i class="mdi mdi-weight f-20 px-2"></i
       ></span>
     </div>
     <div class="col-md-3">
-      <h1>{{ backlog.name }}</h1>
+      <h1 :class="{'text-light': (backlog.weightTotal == 0)}">{{ backlog.name }}</h1>
     </div>
     <div class="col-md-3">
-      <p>Details: {{ backlog.description }}</p>
-      <h5>status:{{ backlog.status }}</h5>
+      <p  :class="{'text-light': (backlog.weightTotal == 0)}">Details: {{ backlog.description }}</p>
+      <h5 :class="{'text-light': (backlog.weightTotal == 0)}">status:{{ backlog.status }}</h5>
     </div>
     <div class="col-1">
       <!-- this makes the data-bs target dynamically add the backlog id to the target based on which backlog is used to pop the modal -->
@@ -135,4 +138,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.colorred{
+  background-color:orangered
+}
 </style>
