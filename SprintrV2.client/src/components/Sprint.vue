@@ -1,8 +1,11 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <!-- <button @click="moveBacklogToSprint()">Add Backlog to Sprint</button> -->
-      <h3>{{ sprint.name }}</h3>
+      <button @click="moveBacklogToSprint()">Add Backlog to Sprint</button>
+      <span>
+        <p></p>
+        <h3>{{ sprint.name }}</h3>
+        </span>
       <p>
         <small
           >{{ new Date(sprint.endDate).toLocaleDateString() }} -
