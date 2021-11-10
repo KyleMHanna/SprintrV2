@@ -9,6 +9,7 @@ class TaskService {
     try {
       const res = await api.get(`api/projects/${ projectId }/tasks`)
       AppState.tasks = res.data.map(t => new Task(t))
+      this.setWeight()
     } catch (err) {
       logger.error("No tasks Found", err)
     }
@@ -16,6 +17,7 @@ class TaskService {
   async getTask(projectId, taskId) {
     try {
       const res = await api.get(`api/projects/${ projectId }/tasks/${ taskId }`)
+      this.setWeight()
     } catch (err) {
       logger.error("No task Found", err)
     }
@@ -26,6 +28,7 @@ class TaskService {
 
       const res = await api.post(`api/projects/${ projectId }/tasks`, task)
       AppState.tasks = [...AppState.tasks, new Task(res.data, projectId, backlogItemId)]
+      this.setWeight()
       logger.log(res.data, '⚠ creating task')
       return res.data.id
     } catch (err) {
@@ -36,6 +39,7 @@ class TaskService {
     try {
       const res = await api.delete(`api/projects/${ projectId }/tasks/${ taskId }`)
       AppState.tasks = AppState.tasks.filter(t => t.id !== taskId)
+      this.setWeight()
     } catch (err) {
       logger.error("No task deleted", err)
     }
@@ -55,6 +59,20 @@ class TaskService {
     // AppState.tasks = res.taskData.map(t => new Task(t))
     logger.log('if checkbox', res.data)
     logger.log('taskData', taskData)
+  }
+
+  setWeight() {
+    let tasksWeight = 0
+    let tasks = []
+    for (let i = 0; i < AppState.backlogs.length; i++) {
+      tasks = AppState.tasks.filter(t => t.backlogItemId === AppState.backlogs[i].id)
+      for (let i = 0; i < tasks.length; i++) {
+        tasksWeight += tasks[i].weight
+      }
+      AppState.backlogs[i].weightTotal = tasksWeight
+      tasksWeight = 0
+    }
+    AppState.backlogs.weightTotal = tasksWeight
   }
 }
 export const taskService = new TaskService()

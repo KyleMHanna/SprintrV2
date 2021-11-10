@@ -1,5 +1,10 @@
 <template>
   <div class="row bg-secondary">
+    <div class="col-md-1">
+      <span class="px-2">
+        {{ backlog.weightTotal }}<i class="mdi mdi-weight f-20 px-2"></i
+      ></span>
+    </div>
     <div class="col-md-3">
       <h1>{{ backlog.name }}</h1>
     </div>
