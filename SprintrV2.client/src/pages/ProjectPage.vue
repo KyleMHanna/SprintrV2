@@ -22,8 +22,8 @@
           >
         </button>
       </div>
-      <div class="col-md-10 card">
-        <div class="card-header bg bg-primary">
+      <div class="col-md-10 card  m-0">
+        <div class="card-header bg bg-primary m-0">
           <p v-if="currentProject.creator">
             Project lead:
             <img

@@ -1,8 +1,8 @@
 <template>
   <div
     class="row  m-auto"
-    :class="{ 'colorred': (backlog.weightTotal > 15) },
-     { 'bg-info':(backlog.weightTotal <= 15 && backlog.weightTotal >5 ) },
+    :class="{ 'bg-danger': (backlog.weightTotal > 15) },
+     { 'bg-warning':(backlog.weightTotal <= 15 && backlog.weightTotal >5 ) },
      { 'bg-success': (backlog.weightTotal <=5)},
      { 'bg-dark text-white': (backlog.weightTotal == 0)}"
   >

@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-bg-grad border-bottom border-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+        <img alt="logo" src="../assets/img/Trello-logo.png" height="60" />
       </div>
     </router-link>
     <button
@@ -23,7 +23,7 @@
             :to="{ name: 'About' }"
             class="btn text-success lighten-30 selectable text-uppercase"
           >
-            About
+           Devs
           </router-link>
         </li>
       </ul>
@@ -104,7 +104,7 @@ export default {
 }
 </script>
 
-<style scoped  >
+<style scoped lang="scss" >
 .dropdown-menu {
   user-select: none;
   display: block;
@@ -128,4 +128,24 @@ a:hover {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
+
+  .bg-bg-grad{
+  justify-content: center;
+  background: linear-gradient(-60deg, #00d4ff, #cecaca, #868484, #cc49d2);
+  background-size: 600% 600%;
+animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+0% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+100% {
+background-position: 0% 50%;
+}
+}
 </style>
+
