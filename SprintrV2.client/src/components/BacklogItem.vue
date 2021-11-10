@@ -1,5 +1,8 @@
 <template>
-  <div class="row bg-primary m-auto">
+  <div
+    class="row  m-auto"
+    :class="{ 'bg-danger': (backlog.weightTotal > 25) },{ 'bg-info':(backlog.weightTotal >= 15 ) },{ 'bg-success': (backlog.weightTotal >=5)}"
+  >
     <div class="col-md-1">
       <span class="px-2">
         {{ backlog.weightTotal }}<i class="mdi mdi-weight f-20 px-2"></i
