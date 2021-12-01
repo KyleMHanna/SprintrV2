@@ -25,7 +25,7 @@
           </option>
         </select>
 
-        <div class="row">
+        <div class="row">  
           <input
             v-model="editable.status"
             type="radio"
