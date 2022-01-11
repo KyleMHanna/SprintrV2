@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-bg-grad border-bottom border-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/Trello-logo.png" height="60" />
+        <img alt="logo" src="https://play-lh.googleusercontent.com/Yyc3jexiNciR4aGJk7uRcC6r1IrN8WcN0-af5Grd1dlvDyTnyCSrbj13Wznba0LwVufs" height="60" />
       </div>
     </router-link>
     <button
