@@ -51,7 +51,7 @@ export default {
       },
       account: computed(() => AppState.account),
       currentProject: computed(() => AppState.currentProject),
-      sprintbacklogs: computed(() => AppState.backlogs.filter(b => b.sprintId === props.sprint.id)),
+      sprintBacklogs: computed(() => AppState.backlogs.filter(b => b.sprintId === props.sprint.id)),
       backlogs: computed(() => AppState.backlogs.filter(b => b.backlogItemId === route.params.projectId)),
       currentsprint: computed(() => AppState.currentSprint),
       sprint: computed(() => AppState.sprints)
