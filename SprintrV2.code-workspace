@@ -42,9 +42,12 @@
       "SAMVS",
       "backlogpage",
       "bcwdev",
-      "virtuals"
+      "virtuals",
+      "vite",
+      "vitejs"
     ],
     "cSpell.words": [
+      "popperjs",
       "sprintbacklogs",
       "updatedbacklog"
     ]
