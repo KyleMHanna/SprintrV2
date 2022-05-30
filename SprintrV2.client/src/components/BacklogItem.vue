@@ -138,7 +138,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.colorred{
+.colored{
   background-color:orangered
 }
 </style>
